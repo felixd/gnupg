@@ -96,15 +96,16 @@ gpg --export your_address@example.net | curl -T - https://keys.openpgp.org
 ```bash
 felixd@192:~/ [master]$ gpg --list-keys
 
-# Key I am interested in: E88BAFBFA5358591
-
-$ gpg --output mygpgkey_pub.gpg --armor --export E88BAFBFA5358591
-$ gpg --output mygpgkey_sec.gpg --armor --export-secret-key E88BAFBFA5358591
+# Key I am interested in: 0x9CC77B3A8866A558
+KEY="0x9CC77B3A8866A558"
+gpg --output ${KEY}_pub.gpg --armor --export $KEY
+gpg --output ${KEY}_sec.gpg --armor --export-secret-key $KEY
+gpg --output ${KEY}_sec-sub.gpg --armor --export-secret-subkeys $KEY
 
 # or directly to terminal if needed
 
-$ gpg --armor --export E88BAFBFA5358591
-$ gpg --armor --export-secret-key E88BAFBFA5358591
+gpg --armor --export $KEY
+gpg --armor --export-secret-key $KEY
 
 felixd@remotehost:~$ gpg --import mygpgkey_pub.gpg
 felixd@remotehost:~$ gpg --allow-secret-key-import --import mygpgkey_sec.gpg
@@ -118,7 +119,7 @@ felixd@remotehost:~$ gpg --allow-secret-key-import --import mygpgkey_sec.gpg
 
 ```bash
 git config --global commit.gpgsign true # To sign every commit
-git config --global user.signingkey E88BAFBFA5358591
+git config --global user.signingkey 0x9CC77B3A8866A558
 ```
 
 ![image](https://user-images.githubusercontent.com/4963164/111005115-7ebd6900-838a-11eb-830d-35fcce4590a1.png)
