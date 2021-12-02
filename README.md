@@ -156,3 +156,9 @@ E0F94FE793B71D7EC1475ECD9CC77B3A8866A558
 
 curl https://keys.openpgp.org/vks/v1/by-fingerprint/E0F94FE793B71D7EC1475ECD9CC77B3A8866A558 | gpg --import
 ```
+
+## Donations & Support
+
+If You would like to support this project:
+
+* **BTC**: bc1qe4clvflldgqw5s9y0yn3lm99lz9yf9mn4x3zfe
