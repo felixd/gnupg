@@ -144,6 +144,50 @@ echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
 killall gpg-agent
 ```
 
+## Key Renew
+
+# Renew GPG key
+
+```bash
+KEY="0x9CC77B3A8866A558"
+gpg --list-keys
+gpg --edit-key $KEY
+
+```
+
+Now we are inside GPG. Use the `expire` command to set a new expire date:
+
+```
+gpg> expire
+```    
+
+When prompted type `1y` or however long you want the key to last for.
+
+Select all the subkeys (the primary key, which we just set the expires date for, is key 0):
+
+```
+gpg> key 1
+gpg> key 2
+gpg> key 3
+gpg> expire
+
+gpg> trust
+gpg> save
+
+gpg -a --export $KEY > $KEY.gpg.public
+gpg -a --export-secret-keys $KEY > $KEY.gpg.private
+```
+
+Move the keys on to something like a USB drive and store it safely in another location.
+
+Publish the public key:
+
+```
+gpg --keyserver keyserver.ubuntu.com --send-keys $KEY
+gpg --keyserver pgp.mit.edu --send-keys $KEY
+```
+
+
 ## Best Practices
 
 * https://riseup.net/pl/security/message-security/openpgp/gpg-best-practices
