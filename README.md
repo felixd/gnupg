@@ -98,17 +98,14 @@ felixd@192:~/ [master]$ gpg --list-keys
 
 # Key I am interested in: 0x9CC77B3A8866A558
 KEY="0x9CC77B3A8866A558"
-gpg --output ${KEY}_pub.gpg --armor --export $KEY
-gpg --output ${KEY}_sec.gpg --armor --export-secret-key $KEY
-gpg --output ${KEY}_sec-sub.gpg --armor --export-secret-subkeys $KEY
+gpg --output ${KEY}.gpg.public.asc --armor --export $KEY
+# Main KEY
+gpg --output ${KEY}.gpg.private.asc --armor --export-secret-key $KEY
+# Sub Secure Key
+gpg --output ${KEY}.gpg.private_sub.asc --armor --export-secret-subkeys $KEY
 
-# or directly to terminal if needed
-
-gpg --armor --export $KEY
-gpg --armor --export-secret-key $KEY
-
-felixd@remotehost:~$ gpg --import mygpgkey_pub.gpg
-felixd@remotehost:~$ gpg --allow-secret-key-import --import mygpgkey_sec.gpg
+felixd@remotehost:~$ gpg --import ${KEY}.gpg.public.asc
+felixd@remotehost:~$ gpg --allow-secret-key-import --import ${KEY}.gpg.private_sub.asc
 ```
 
 ## Git
@@ -159,7 +156,7 @@ Now we are inside GPG. Use the `expire` command to set a new expire date:
 
 ```
 gpg> expire
-```    
+```
 
 When prompted type `1y` or however long you want the key to last for.
 
@@ -174,8 +171,11 @@ gpg> expire
 gpg> trust
 gpg> save
 
-gpg -a --export $KEY > $KEY.gpg.public
-gpg -a --export-secret-keys $KEY > $KEY.gpg.private
+KEY="0x9CC77B3A8866A558"
+gpg --output ${KEY}.gpg.public.asc --armor --export $KEY
+gpg --output ${KEY}.gpg.private.asc --armor --export-secret-key $KEY
+gpg --output ${KEY}.gpg.private_sub.asc --armor --export-secret-subkeys $KEY
+
 ```
 
 Move the keys on to something like a USB drive and store it safely in another location.
@@ -183,8 +183,11 @@ Move the keys on to something like a USB drive and store it safely in another lo
 Publish the public key:
 
 ```
+KEY="0x9CC77B3A8866A558"
 gpg --keyserver keyserver.ubuntu.com --send-keys $KEY
 gpg --keyserver pgp.mit.edu --send-keys $KEY
+gpg --keyserver keys.openpgp.org --send-keys $KEY
+
 ```
 
 
