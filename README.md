@@ -9,7 +9,7 @@ brew install gnupg
 ```
 
 ### Linux: Debian/Ubuntu (should be already installed)
-
+  
 ```bash
 sudo apt install gnupg
 ```
