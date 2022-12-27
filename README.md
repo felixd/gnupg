@@ -247,6 +247,12 @@ gpg --keyserver keys.openpgp.org --send-keys $KEY
 
 * https://riseup.net/pl/security/message-security/openpgp/gpg-best-practices
 
+## OpenPGP/GPG tools
+
+* https://codref.org/tools/pgp/
+* https://pgptool.org/
+* https://openpgpjs.org/
+
 ## Author
 
 * Paweł 'felixd' Wojciechowski [0x9CC77B3A8866A558](https://keys.openpgp.org/vks/v1/by-fingerprint/E0F94FE793B71D7EC1475ECD9CC77B3A8866A558)
@@ -255,7 +261,6 @@ E0F94FE793B71D7EC1475ECD9CC77B3A8866A558
 
 curl https://keys.openpgp.org/vks/v1/by-fingerprint/E0F94FE793B71D7EC1475ECD9CC77B3A8866A558 | gpg --import
 ```
-
 ## Donations & Support
 
 If You would like to support this project:
