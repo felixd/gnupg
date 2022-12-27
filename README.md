@@ -246,6 +246,7 @@ gpg --keyserver keys.openpgp.org --send-keys $KEY
 ## Best Practices
 
 * https://riseup.net/pl/security/message-security/openpgp/gpg-best-practices
+* https://www.reddit.com/r/GnuPG/comments/vjas2e/proper_key_management/
 
 ## OpenPGP/GPG tools
 
