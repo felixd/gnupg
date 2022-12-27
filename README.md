@@ -152,7 +152,7 @@ felixd@remotehost:~$ gpg --import ${KEY}.gpg.public.asc
 felixd@remotehost:~$ gpg --allow-secret-key-import --import ${KEY}.gpg.private_sub.asc
 ```
 
-## Git
+## Git/SSH and GPG
 
 * https://docs.github.com/en/github/authenticating-to-github/signing-commits
 * https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work
@@ -160,6 +160,23 @@ felixd@remotehost:~$ gpg --allow-secret-key-import --import ${KEY}.gpg.private_s
 ```bash
 git config --global commit.gpgsign true
 git config --global user.signingkey 0x9CC77B3A8866A558
+```
+
+### Windows
+
+In case you receive error messages that GPG secret sign key is missing:
+
+```log
+gpg: skipped "0x9CC77B3A8866A558": No secret key
+gpg: signing failed: No secret key
+error: gpg failed to sign the data
+fatal: failed to write commit object
+```
+
+set in Git configuration path to GPG program:
+
+```bash
+git config --global gpg.program "C:/Program Files (x86)/gnupg/bin/gpg.exe"
 ```
 
 ![image](https://user-images.githubusercontent.com/4963164/111005115-7ebd6900-838a-11eb-830d-35fcce4590a1.png)
