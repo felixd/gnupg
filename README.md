@@ -1,32 +1,48 @@
-# GnuPG on macOS
+# GnuPG / GPG / OpenPGP
 
 ## Installation
+
+### macOS
 
 ```bash
 brew install gnupg
 ```
+
+### Linux: Debian/Ubuntu (should be already installed)
+
+```bash
+sudo apt install gnupg
+```
+
+### Configuration files
 
 ```bash
 touch ~/.gnupg/gpg.conf
 touch ~/.gnupg/gpg-agent.conf
 ```
 
-Configuration files: [.gnupg/](.gnupg/)
+Configuration files are in this repo: [.gnupg/](.gnupg/)
 
-## Creating new key. Cookbook
+## Cookbook for creating new key from scratch
 
-### What we want to achieve
+### Introduction. What we want to achieve
 
-Primary, master key will be offline backed up
+* **Primary**, **master key will be kept offline**. This key will only be used to generate and control secure sub keys
+  * [C] - **Certify**
+* Secure keys that are going to be used by You are:
+  * [S] - **Sign**
+  * [A] - **Authenticate**
+  * [E] - **Encrypt**
 
 ```bash
-
 # [C] - Certify
 # [S] - Sign
 # [A] - Authenticate
 # [E] - Encrypt
 
-felixd@192:~$ gpg -k && gpg -K
+# List public keys
+felixd@192:~$ gpg -k
+
 /Users/felixd/.gnupg/pubring.kbx
 --------------------------------
 pub   nistp521/0x9CC77B3A8866A558 2021-03-19 [C] # <-- [C] - Certify
@@ -36,6 +52,9 @@ uid                   [ultimate] Paweł Wojciechowski <felixd@wp.pl>
 sub   nistp521/0x784E7C68559BA960 2021-03-19 [S] [expires: 2023-03-19]
 sub   nistp521/0x5F7748EAAA46D8A4 2021-03-19 [E] [expires: 2023-03-19]
 sub   nistp521/0x07AD11F0AE1DAAF2 2021-03-19 [A] [expires: 2023-03-19]
+
+# List secure keys
+felixd@192:~$ gpg -K
 
 /Users/felixd/.gnupg/pubring.kbx
 --------------------------------
@@ -49,9 +68,32 @@ ssb   nistp521/0x07AD11F0AE1DAAF2 2021-03-19 [A] [expires: 2023-03-19]
 
 ```
 
+If personally prefer **Elliptic-curve cryptography. Read more about it on Wikipedia: https://en.wikipedia.org/wiki/Elliptic-curve_cryptography
+
+```txt
++---------------+-------------------------+-----------------+
+| Symmetric Key | RSA and Diffie-Hellman  | Elliptic Curve  |
+| Size (bits)   |      Key Size (bits)    | Key Size (bits) |
++---------------+-------------------------+-----------------+
+|       80      |            1024         |       160       |
+|      112      |            2048         |       224       |
+|      128      |            3072         |       256       |
+|      192      |            7680         |       384       |
+|      256      |           15360         |       521       |
++---------------+-------------------------+-----------------+
+             Table 1: NIST Recommended Key Sizes
+```
+
+To generate ECC keys use below command:
+
 ```bash
 gpg --full-generate-key --expert
-ECC / (5) NIST P-521
+```
+
+Then select `EEC / (5) NIST P-521`
+
+```bash
+* ECC / (5) NIST P-521
 RSA / 4096 bit
 ```
 
@@ -63,30 +105,34 @@ GPG encrypts the file once with a symmetric key, then places a header identifyin
 
 Thus, file size growth for each recipient is small and roughly linear. Some variation may exist for key length and padding so it's not predictable different for different key sizes and algorithms, but it's small. In a quick test demonstration using no compression:
 
-```
+```bash
 gpg --encrypt --recipient alice@example.com \
     --recipient bob@example.com doc.txt
 ```
 
-```
+```bash
 11,676,179 source
 11,676,785 encrypted-to-one (+606 bytes)
 11,677,056 encrypted-to-two (+277 bytes)
 11,677,329 encrypted-to-three (+273 bytes)
 ```
 
-## Keys Server (catalog)
+## OpenPGP Key Servers
 
-* https://keys.openpgp.org/about
+Below services provide option to store and to **manage** Your public keys:
 
-The keys.openpgp.org server is a public service for the distribution and discovery of OpenPGP-compatible keys, commonly referred to as a "keyserver".
+* https://keys.openpgp.org
+* https://keys.mailvelope.com/manage.html
 
-* https://keys.openpgp.org/about/usage
+Below services provide option to upload and store keys (no chance to manage them)
 
-### Exporting public key
+* https://keyserver.ubuntu.com/
+* https://pgp.mit.edu/
+
+### Exporting public key to Key Server
 
 ```bash
-gpg --export your_address@example.net | curl -T - https://keys.openpgp.org
+gpg --export you@example.org | curl -T - https://keys.openpgp.org
 ```
 
 ## Import/Export keys [general]
@@ -99,9 +145,7 @@ felixd@192:~/ [master]$ gpg --list-keys
 # Key I am interested in: 0x9CC77B3A8866A558
 KEY="0x9CC77B3A8866A558"
 gpg --output ${KEY}.gpg.public.asc --armor --export $KEY
-# Main KEY
 gpg --output ${KEY}.gpg.private.asc --armor --export-secret-key $KEY
-# Sub Secure Key
 gpg --output ${KEY}.gpg.private_sub.asc --armor --export-secret-subkeys $KEY
 
 felixd@remotehost:~$ gpg --import ${KEY}.gpg.public.asc
@@ -113,21 +157,18 @@ felixd@remotehost:~$ gpg --allow-secret-key-import --import ${KEY}.gpg.private_s
 * https://docs.github.com/en/github/authenticating-to-github/signing-commits
 * https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work
 
-
 ```bash
-git config --global commit.gpgsign true # To sign every commit
+git config --global commit.gpgsign true
 git config --global user.signingkey 0x9CC77B3A8866A558
 ```
 
 ![image](https://user-images.githubusercontent.com/4963164/111005115-7ebd6900-838a-11eb-830d-35fcce4590a1.png)
-
 
 ## Mailvelope: OpenPGP on Web Mail (Gmail, Yahoo Mail, etc) encryption/decryption/singing
 
 To integrated GnuPG with your Web Mail clinet use Mailvelope: https://www.mailvelope.com
 
 * https://github.com/mailvelope/mailvelope/wiki/Mailvelope-GnuPG-integration
-
 
 ### gpg: public key decryption failed: Inappropriate ioctl for device
 
@@ -141,20 +182,17 @@ echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
 killall gpg-agent
 ```
 
-## Key Renew
-
-# Renew GPG key
+## Change key expiration date
 
 ```bash
 KEY="0x9CC77B3A8866A558"
 gpg --list-keys
 gpg --edit-key $KEY
-
 ```
 
 Now we are inside GPG. Use the `expire` command to set a new expire date:
 
-```
+```bash
 gpg> expire
 ```
 
@@ -162,7 +200,7 @@ When prompted type `1y` or however long you want the key to last for.
 
 Select all the subkeys (the primary key, which we just set the expires date for, is key 0):
 
-```
+```bash
 gpg> key 1
 gpg> key 2
 gpg> key 3
@@ -175,21 +213,18 @@ KEY="0x9CC77B3A8866A558"
 gpg --output ${KEY}.gpg.public.asc --armor --export $KEY
 gpg --output ${KEY}.gpg.private.asc --armor --export-secret-key $KEY
 gpg --output ${KEY}.gpg.private_sub.asc --armor --export-secret-subkeys $KEY
-
 ```
 
 Move the keys on to something like a USB drive and store it safely in another location.
 
 Publish the public key:
 
-```
+```bash
 KEY="0x9CC77B3A8866A558"
 gpg --keyserver keyserver.ubuntu.com --send-keys $KEY
 gpg --keyserver pgp.mit.edu --send-keys $KEY
 gpg --keyserver keys.openpgp.org --send-keys $KEY
-
 ```
-
 
 ## Best Practices
 
