@@ -47,8 +47,8 @@ felixd@192:~$ gpg -k
 --------------------------------
 pub   nistp521/0x9CC77B3A8866A558 2021-03-19 [C] # <-- [C] - Certify
       Key fingerprint = E0F9 4FE7 93B7 1D7E C147  5ECD 9CC7 7B3A 8866 A558
-uid                   [ultimate] Paweł Wojciechowski <felixd@konopnickiej.com>
-uid                   [ultimate] Paweł Wojciechowski <felixd@wp.pl>
+uid                   [ultimate] Paweł Wojciechowski <felixd@example.org>
+uid                   [ultimate] Paweł Wojciechowski <felixd@example2.org>
 sub   nistp521/0x784E7C68559BA960 2021-03-19 [S] [expires: 2023-03-19]
 sub   nistp521/0x5F7748EAAA46D8A4 2021-03-19 [E] [expires: 2023-03-19]
 sub   nistp521/0x07AD11F0AE1DAAF2 2021-03-19 [A] [expires: 2023-03-19]
@@ -60,8 +60,8 @@ felixd@192:~$ gpg -K
 --------------------------------
 sec#  nistp521/0x9CC77B3A8866A558 2021-03-19 [C]
       Key fingerprint = E0F9 4FE7 93B7 1D7E C147  5ECD 9CC7 7B3A 8866 A558
-uid                   [ultimate] Paweł Wojciechowski <felixd@konopnickiej.com>
-uid                   [ultimate] Paweł Wojciechowski <felixd@wp.pl>
+uid                   [ultimate] Paweł Wojciechowski <felixd@example.org>
+uid                   [ultimate] Paweł Wojciechowski <felixd@example2.org>
 ssb   nistp521/0x784E7C68559BA960 2021-03-19 [S] [expires: 2023-03-19]
 ssb   nistp521/0x5F7748EAAA46D8A4 2021-03-19 [E] [expires: 2023-03-19]
 ssb   nistp521/0x07AD11F0AE1DAAF2 2021-03-19 [A] [expires: 2023-03-19]
