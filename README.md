@@ -97,6 +97,12 @@ Then select `EEC / (5) NIST P-521`
 RSA / 4096 bit
 ```
 
+More about **Eliptic Curves**
+
+* https://en.wikipedia.org/wiki/Elliptic-curve_cryptography
+* https://en.wikipedia.org/wiki/Curve25519
+* **Elliptic Curves - Computerphile** https://www.youtube.com/watch?v=NF1pwjL9-DE
+
 ## Files size when GPG encrypts for multiple recipients
 
 * https://security.stackexchange.com/questions/8245/gpg-file-size-with-multiple-recipients
@@ -267,3 +273,5 @@ curl https://keys.openpgp.org/vks/v1/by-fingerprint/E0F94FE793B71D7EC1475ECD9CC7
 If You would like to support this project:
 
 * **BTC**: bc1qe4clvflldgqw5s9y0yn3lm99lz9yf9mn4x3zfe
+
+or try our [Immersion Cooling](https://flameit.io) technology we develop together with FlameIT
