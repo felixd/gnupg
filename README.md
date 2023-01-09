@@ -97,11 +97,13 @@ Then select `EEC / (5) NIST P-521`
 RSA / 4096 bit
 ```
 
-More about **Eliptic Curves**
+### More about **Eliptic Curves**
 
 * https://en.wikipedia.org/wiki/Elliptic-curve_cryptography
 * https://en.wikipedia.org/wiki/Curve25519
 * **Elliptic Curves - Computerphile** https://www.youtube.com/watch?v=NF1pwjL9-DE
+* https://safecurves.cr.yp.to/
+* https://soatok.blog/2022/05/19/guidance-for-choosing-an-elliptic-curve-signature-algorithm-in-2022/
 
 ## Files size when GPG encrypts for multiple recipients
 
