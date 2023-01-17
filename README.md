@@ -189,6 +189,50 @@ git config --global gpg.program "C:/Program Files (x86)/gnupg/bin/gpg.exe"
 
 ![image](https://user-images.githubusercontent.com/4963164/111005115-7ebd6900-838a-11eb-830d-35fcce4590a1.png)
 
+## GnuPG usage examples
+
+### Document signing (detached signature) by more than one person
+
+```bash
+gpg -u author -a -o doc.author.asc --detach-sig doc.txt
+gpg --verify doc.author.asc doc.txt
+
+gpg -u validator -a -o doc.validator.asc --detach-sig doc.txt
+
+gpg --verify doc.author.asc doc.txt
+gpg --verify doc.validator.asc doc.txt
+```
+
+### Multiple signatures in one ASC file
+
+* https://stackoverflow.com/questions/37725969/several-pgp-signatures-for-one-file
+
+```bash
+DOC="doc.txt"
+AUTHOR="E0F94FE793B71D7EC1475ECD9CC77B3A8866A558"
+VALIDATOR="A32A6115CA696220C1644E98EB9E03D2EBC82F5A"
+
+echo "This is a document." > $DOC
+
+gpg -u $AUTHOR -a -o $DOC.$AUTHOR.asc --detach-sig $DOC
+gpg -u $VALIDATOR -a -o $DOC.$VALIDATOR.asc --detach-sig $DOC
+
+cat $DOC.*.asc > $DOC.signatures.asc
+
+gpg --verify $DOC.signatures.asc $DOC
+```
+
+```
+Output:
+gpg --verify $DOC.signatures.asc $DOC
+gpg: Signature made wto, 17 sty 2023, 14:03:44 CET
+gpg:                using RSA key A32A6115CA696220C1644E98EB9E03D2EBC82F5A
+gpg: Good signature from "Validator <validator@example.org>" [ultimate]
+gpg: Signature made wto, 17 sty 2023, 14:03:44 CET
+gpg:                using ECDSA key E0F94FE793B71D7EC1475ECD9CC77B3A8866A558
+gpg: Good signature from "Author <author@example.org>" [ultimate]
+```
+
 ## Mailvelope: OpenPGP on Web Mail (Gmail, Yahoo Mail, etc) encryption/decryption/singing
 
 To integrated GnuPG with your Web Mail clinet use Mailvelope: https://www.mailvelope.com
