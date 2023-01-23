@@ -68,7 +68,11 @@ ssb   nistp521/0x07AD11F0AE1DAAF2 2021-03-19 [A] [expires: 2023-03-19]
 
 ```
 
-If personally prefer **Elliptic-curve cryptography. Read more about it on Wikipedia: https://en.wikipedia.org/wiki/Elliptic-curve_cryptography
+If personally prefer **Elliptic-curve cryptography**. Read more about it on Wikipedia: https://en.wikipedia.org/wiki/Elliptic-curve_cryptography
+
+128 bits of entropy (2^128) is more than enought, but we are paranoic. Do not forget to check available entropy in Your system. You need to have number of entropy bits avilable equal or bigger than the key size You want to generate.
+
+* https://www.keylength.com/en/compare/
 
 ```txt
 +---------------+-------------------------+-----------------+
@@ -84,18 +88,39 @@ If personally prefer **Elliptic-curve cryptography. Read more about it on Wikipe
              Table 1: NIST Recommended Key Sizes
 ```
 
+### Checking entropy size and quality
+
+```bash
+cat /proc/sys/kernel/random/entropy_avail
+```
+```bash
+rngtest -c 1000 </dev/random
+```
+```bash
+dieharder -a
+```
+```bash
+dd if=/dev/random of=/dev/null bs=1024000 count=100 iflag=fullblock
+```
+
+## Generating keys
+
 To generate ECC keys use below command:
 
 ```bash
 gpg --full-generate-key --expert
+
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (9) ECC and ECC
 ```
 
-Then select `EEC / (5) NIST P-521`
+Please select which elliptic curve you want:
+* `ECC (1) Curve 25519`
+* `ECC (5) NIST P-521`
 
-```bash
-* ECC / (5) NIST P-521
-RSA / 4096 bit
-```
+If You have selected **RSA and RSA**:
+* `RSA | 4096 bit`
 
 ### More about **Eliptic Curves**
 
@@ -104,6 +129,10 @@ RSA / 4096 bit
 * **Elliptic Curves - Computerphile** https://www.youtube.com/watch?v=NF1pwjL9-DE
 * https://safecurves.cr.yp.to/
 * https://soatok.blog/2022/05/19/guidance-for-choosing-an-elliptic-curve-signature-algorithm-in-2022/
+
+### More about **bits of entropy**
+
+* https://security.stackexchange.com/questions/102157/do-you-need-more-than-128-bit-entropy/102163#102163
 
 ## Files size when GPG encrypts for multiple recipients
 
