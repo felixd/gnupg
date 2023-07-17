@@ -14,6 +14,14 @@ brew install gnupg
 sudo apt install gnupg
 ```
 
+### Windows
+
+Download and install **Gpg4win** package (containes Kleopatra)
+
+* [https://www.gpg4win.org/download.html](https://www.gpg4win.org/download.html)
+
+**Kleopatra** is a certificate manager and a universal crypto GUI. It supports managing X.509 and OpenPGP certificates in the GpgSM keybox and retrieving certificates from LDAP servers.
+
 ### Configuration files
 
 ```bash
