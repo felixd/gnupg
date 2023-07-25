@@ -134,15 +134,15 @@ If You have selected **RSA and RSA**:
 
 ### More about **Eliptic Curves**
 
-* https://en.wikipedia.org/wiki/Elliptic-curve_cryptography
-* https://en.wikipedia.org/wiki/Curve25519
-* **Elliptic Curves - Computerphile** https://www.youtube.com/watch?v=NF1pwjL9-DE
-* https://safecurves.cr.yp.to/
-* https://soatok.blog/2022/05/19/guidance-for-choosing-an-elliptic-curve-signature-algorithm-in-2022/
+* [https://en.wikipedia.org/wiki/Elliptic-curve_cryptography](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography)
+* [https://en.wikipedia.org/wiki/Curve25519](https://en.wikipedia.org/wiki/Curve25519)
+* **Elliptic Curves - Computerphile** [https://www.youtube.com/watch?v=NF1pwjL9-DE](https://www.youtube.com/watch?v=NF1pwjL9-DE)
+* [https://safecurves.cr.yp.to/](https://safecurves.cr.yp.to/)
+* [https://soatok.blog/2022/05/19/guidance-for-choosing-an-elliptic-curve-signature-algorithm-in-2022/](https://soatok.blog/2022/05/19/guidance-for-choosing-an-elliptic-curve-signature-algorithm-in-2022/)
 
 ### More about **bits of entropy**
 
-* https://security.stackexchange.com/questions/102157/do-you-need-more-than-128-bit-entropy/102163#102163
+* [https://security.stackexchange.com/questions/102157/do-you-need-more-than-128-bit-entropy/102163#102163](https://security.stackexchange.com/questions/102157/do-you-need-more-than-128-bit-entropy/102163#102163)
 
 ## Files size when GPG encrypts for multiple recipients
 
@@ -168,13 +168,13 @@ gpg --encrypt --recipient alice@example.com \
 
 Below services provide option to store and to **manage** Your public keys:
 
-* https://keys.openpgp.org
-* https://keys.mailvelope.com/manage.html
+* [https://keys.openpgp.org](https://keys.openpgp.org)
+* [https://keys.mailvelope.com/manage.html](https://keys.mailvelope.com/manage.html)
 
 Below services provide option to upload and store keys (no chance to manage them)
 
-* https://keyserver.ubuntu.com/
-* https://pgp.mit.edu/
+* [https://keyserver.ubuntu.com/](https://keyserver.ubuntu.com/)
+* [https://pgp.mit.edu/](https://pgp.mit.edu/)
 
 ### Exporting public key to Key Server
 
@@ -184,7 +184,7 @@ gpg --export you@example.org | curl -T - https://keys.openpgp.org
 
 ## Import/Export keys [general]
 
-* https://www.debuntu.org/how-to-importexport-gpg-key-pair/
+* [https://www.debuntu.org/how-to-importexport-gpg-key-pair/](https://www.debuntu.org/how-to-importexport-gpg-key-pair/)
 
 ```bash
 felixd@192:~/ [master]$ gpg --list-keys
@@ -201,8 +201,8 @@ felixd@remotehost:~$ gpg --allow-secret-key-import --import ${KEY}.gpg.private_s
 
 ## Git/SSH and GPG
 
-* https://docs.github.com/en/github/authenticating-to-github/signing-commits
-* https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work
+* [https://docs.github.com/en/github/authenticating-to-github/signing-commits](https://docs.github.com/en/github/authenticating-to-github/signing-commits)
+* [https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work](https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work)
 
 ```bash
 git config --global commit.gpgsign true
@@ -244,7 +244,7 @@ gpg --verify doc.validator.asc doc.txt
 
 ### Multiple signatures in one ASC file
 
-* https://stackoverflow.com/questions/37725969/several-pgp-signatures-for-one-file
+* [https://stackoverflow.com/questions/37725969/several-pgp-signatures-for-one-file](https://stackoverflow.com/questions/37725969/several-pgp-signatures-for-one-file)
 
 ```bash
 DOC="doc.txt"
@@ -276,13 +276,13 @@ gpg: Good signature from "Author <author@example.org>" [ultimate]
 
 To integrated GnuPG with your Web Mail clinet use Mailvelope: https://www.mailvelope.com
 
-* https://github.com/mailvelope/mailvelope/wiki/Mailvelope-GnuPG-integration
+* [https://github.com/mailvelope/mailvelope/wiki/Mailvelope-GnuPG-integration](https://github.com/mailvelope/mailvelope/wiki/Mailvelope-GnuPG-integration)
 
 ### gpg: public key decryption failed: Inappropriate ioctl for device
 
 Mailvelope needs password to encode/sign mail when using GnuPG with browser.
 
-* https://github.com/Homebrew/homebrew-core/issues/14737#issuecomment-309547412
+* [https://github.com/Homebrew/homebrew-core/issues/14737#issuecomment-309547412](https://github.com/Homebrew/homebrew-core/issues/14737#issuecomment-309547412)
 
 ```bash
 brew install gpgme pinentry-mac
@@ -336,14 +336,14 @@ gpg --keyserver keys.openpgp.org --send-keys $KEY
 
 ## Best Practices
 
-* https://riseup.net/pl/security/message-security/openpgp/gpg-best-practices
-* https://www.reddit.com/r/GnuPG/comments/vjas2e/proper_key_management/
+* [https://riseup.net/pl/security/message-security/openpgp/gpg-best-practices](https://riseup.net/pl/security/message-security/openpgp/gpg-best-practices)
+* [https://www.reddit.com/r/GnuPG/comments/vjas2e/proper_key_management/](https://www.reddit.com/r/GnuPG/comments/vjas2e/proper_key_management/)
 
 ## OpenPGP/GPG tools
 
-* https://codref.org/tools/pgp/
-* https://pgptool.org/
-* https://openpgpjs.org/
+* [https://codref.org/tools/pgp/](https://codref.org/tools/pgp/)
+* [https://pgptool.org/](https://pgptool.org/)
+* [https://openpgpjs.org/](https://openpgpjs.org/)
 
 ## Author
 
