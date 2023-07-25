@@ -78,11 +78,11 @@ ssb   nistp521/0x07AD11F0AE1DAAF2 2021-03-19 [A] [expires: 2023-03-19]
 
 I prefer **Elliptic-curve cryptography**. It's faster and keys are smaller, which doesn't mean they are weaker (check table below).
 
-Read more about it on Wikipedia: https://en.wikipedia.org/wiki/Elliptic-curve_cryptography
+Read more about it on Wikipedia: [https://en.wikipedia.org/wiki/Elliptic-curve_cryptography](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography)
 
 128 bits of entropy (2^128) is more than enought, but we are paranoic. Do not forget to check available entropy in Your system. You need to have number of entropy bits avilable equal or bigger than the key size You want to generate.
 
-* https://www.keylength.com/en/compare/
+* [https://www.keylength.com/en/compare/](https://www.keylength.com/en/compare/)
 
 ```txt
 +---------------+-------------------------+-----------------+
