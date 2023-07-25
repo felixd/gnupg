@@ -146,7 +146,7 @@ If You have selected **RSA and RSA**:
 
 ## Files size when GPG encrypts for multiple recipients
 
-* https://security.stackexchange.com/questions/8245/gpg-file-size-with-multiple-recipients
+* [https://security.stackexchange.com/questions/8245/gpg-file-size-with-multiple-recipients](https://security.stackexchange.com/questions/8245/gpg-file-size-with-multiple-recipients)
 
 GPG encrypts the file once with a symmetric key, then places a header identifying the target keypair and an encrypted version of the symmetric key. The intricate details of that are defined in section 5.1 of RFC 2440. When encrypted to multiple recipients, this header is placed multiple times providing a uniquely encrypted version of the same symmetric key for each recipient.
 
