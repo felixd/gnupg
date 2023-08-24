@@ -345,6 +345,11 @@ gpg --keyserver keys.openpgp.org --send-keys $KEY
 * [https://pgptool.org/](https://pgptool.org/)
 * [https://openpgpjs.org/](https://openpgpjs.org/)
 
+## GPG/PGP Authentication over SSH
+
+### Yubico Key
+ * [https://developers.yubico.com/PGP/SSH_authentication/Windows.html](Yubico YubiKey - Windows)
+
 ## Author
 
 * Paweł 'felixd' Wojciechowski [0x9CC77B3A8866A558](https://keys.openpgp.org/vks/v1/by-fingerprint/E0F94FE793B71D7EC1475ECD9CC77B3A8866A558)
