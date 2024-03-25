@@ -348,7 +348,8 @@ gpg --keyserver keys.openpgp.org --send-keys $KEY
 ## GPG/PGP Authentication over SSH
 
 ### Yubico Key
- * [https://developers.yubico.com/PGP/SSH_authentication/Windows.html](Yubico YubiKey - Windows)
+
+ * [Yubico YubiKey - Windows](https://developers.yubico.com/PGP/SSH_authentication/Windows.html)
 
 ## Author
 
