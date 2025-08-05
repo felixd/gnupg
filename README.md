@@ -347,6 +347,17 @@ gpg --keyserver keys.openpgp.org --send-keys $KEY
 
 ## GPG/PGP Authentication over SSH
 
+TODO
+
+## Git
+
+TODO: Signatures + authentication instruction
+
+```
+git config --global commit.gpgsign true
+git config --global tag.gpgSign true
+```
+
 ### Yubico Key
 
  * [Yubico YubiKey - Windows](https://developers.yubico.com/PGP/SSH_authentication/Windows.html)
