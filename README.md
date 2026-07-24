@@ -347,6 +347,11 @@ gpg --keyserver pgp.mit.edu --send-keys $KEY
 gpg --keyserver keys.openpgp.org --send-keys $KEY
 ```
 
+## Yubikey + GPG 
+
+* https://namnd.com/posts/my-workstation-setup/
+* https://namnd.com/posts/renew-gpg-keys/
+
 ## Best Practices
 
 - [https://riseup.net/pl/security/message-security/openpgp/gpg-best-practices](https://riseup.net/pl/security/message-security/openpgp/gpg-best-practices)
